@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31624.102
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-iot-pwm", "dotnet-iot-pwm.csproj", "{BF0F664D-0547-4A53-8E23-36E291E8E495}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF0F664D-0547-4A53-8E23-36E291E8E495}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF0F664D-0547-4A53-8E23-36E291E8E495}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF0F664D-0547-4A53-8E23-36E291E8E495}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF0F664D-0547-4A53-8E23-36E291E8E495}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B08C5C6B-6F0A-4D94-A4BF-E3CAC767C385}
+	EndGlobalSection
+EndGlobal
