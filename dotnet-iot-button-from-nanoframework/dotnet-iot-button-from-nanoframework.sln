@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-iot-button-from-nanoframework", "dotnet-iot-button-from-nanoframework\dotnet-iot-button-from-nanoframework.csproj", "{52758F59-853B-463B-AFF9-C644F7069589}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "libs", "libs", "{C05A10CB-90C9-4774-B050-33E336B50738}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Button", "libs\Button\Button.csproj", "{C987F444-A04D-45A5-9236-25F8D24F51E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{52758F59-853B-463B-AFF9-C644F7069589}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52758F59-853B-463B-AFF9-C644F7069589}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52758F59-853B-463B-AFF9-C644F7069589}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52758F59-853B-463B-AFF9-C644F7069589}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C987F444-A04D-45A5-9236-25F8D24F51E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C987F444-A04D-45A5-9236-25F8D24F51E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C987F444-A04D-45A5-9236-25F8D24F51E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C987F444-A04D-45A5-9236-25F8D24F51E7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C987F444-A04D-45A5-9236-25F8D24F51E7} = {C05A10CB-90C9-4774-B050-33E336B50738}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55145D4C-2553-4190-A40C-06136A69D174}
+	EndGlobalSection
+EndGlobal
