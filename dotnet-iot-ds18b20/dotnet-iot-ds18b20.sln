@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31702.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dotnet-iot-ds18b20", "dotnet-iot-ds18b20.csproj", "{E1F261D1-67DB-4D67-9DC9-4EA8F3C1C7AE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1F261D1-67DB-4D67-9DC9-4EA8F3C1C7AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1F261D1-67DB-4D67-9DC9-4EA8F3C1C7AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1F261D1-67DB-4D67-9DC9-4EA8F3C1C7AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1F261D1-67DB-4D67-9DC9-4EA8F3C1C7AE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {59E05D99-1523-4246-8D44-0A554CA08EEA}
+	EndGlobalSection
+EndGlobal
