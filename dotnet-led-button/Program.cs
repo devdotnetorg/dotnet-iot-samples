@@ -39,17 +39,17 @@ namespace dotnet_led_button
                         Console.WriteLine($"Press button, LED={ledPinValue}");        
                     });
                 //Console
-                ConsoleKeyInfo cki;
+                string cki;
                 while (true)
                 {
                     Console.Write("Press any key, or 'X' to quit, or ");
                     Console.WriteLine("CTRL+C to interrupt the read operation:");
-                    // Start a console read operation. Do not display the input.
-                    cki = Console.ReadKey(true);
+                    // Start a console read operation. Do not display the input.                
+                    cki = Console.In.ReadLineAsync().GetAwaiter().GetResult();
                     // Announce the name of the key that was pressed .
-                    Console.WriteLine($"  Key pressed: {cki.Key}\n");
-                    // Exit if the user pressed the 'X' key.
-                    if (cki.Key == ConsoleKey.X) break;
+                    Console.WriteLine($"  Key pressed: {cki}\n");
+                    // Exit if the user pressed the 'X' key.               
+                    if (cki == "X"||cki == "x") break;
                 }
             }
             catch (Exception ex)

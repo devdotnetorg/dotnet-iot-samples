@@ -1,42 +1,89 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "build",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "build",
-                "${workspaceFolder}/dotnet-led-button.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "publish",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "publish",
-                "${workspaceFolder}/dotnet-led-button.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
-            ],
-            "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "watch",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "watch",
-                "run",
-                "${workspaceFolder}/dotnet-led-button.csproj",
-                "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
-            ],
-            "problemMatcher": "$msCompile"
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/dotnet-led-button.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "publish",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "publish",
+        "${workspaceFolder}/dotnet-led-button.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "watch",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "watch",
+        "run",
+        "${workspaceFolder}/dotnet-led-button.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "fastiot-054aa898-build-linux",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/dotnet-led-button.csproj",
+        "--configuration",
+        "Debug",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary",
+        "-r",
+        "linux-arm64"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "fastiot-054aa898-create-folder",
+      "dependsOn": "fastiot-054aa898-build-linux",
+      "command": "C:\\RemoteCode\\cwrsync\\ssh.exe",
+      "type": "process",
+      "args": [
+        "-i",
+        "C:\\RemoteCode\\keys\\id-rsa-bananapim64-aa38a092-debugvscode",
+        "-o",
+        "StrictHostKeyChecking no",
+        "debugvscode@192.168.43.208",
+        "mkdir -p ~/fastiot/dotnet-led-button"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "fastiot-054aa898-copy-app-to-device",
+      "dependsOn": "fastiot-054aa898-create-folder",
+      "command": "C:\\RemoteCode\\cwrsync\\rsync.exe",
+      "type": "process",
+      "args": [
+        "--log-file=rsync.log",
+        "--progress",
+        "-avz",
+        "-e",
+        "C:\\RemoteCode\\cwrsync\\ssh.exe -i C:\\RemoteCode\\keys\\id-rsa-bananapim64-aa38a092-debugvscode -o 'StrictHostKeyChecking no'",
+        "/cygdrive/d/Anton/Projects/dotnet-led-button/bin/Debug/net5.0/linux-arm64/",
+        "debugvscode@192.168.43.208:~/fastiot/dotnet-led-button"
+      ],
+      "problemMatcher": "$msCompile"
+    }
+  ]
 }

@@ -1,27 +1,52 @@
 {
-    "version": "0.2.0",
-    "configurations": [
-        {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md
-            "name": ".NET Core Launch (console)",
-            "type": "coreclr",
-            "request": "launch",
-            "preLaunchTask": "build",
-            // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/bin/Debug/net5.0/dotnet-led-button.dll",
-            "args": [],
-            "cwd": "${workspaceFolder}",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
-            "console": "internalConsole",
-            "stopAtEntry": false
-        },
-        {
-            "name": ".NET Core Attach",
-            "type": "coreclr",
-            "request": "attach",
-            "processId": "${command:pickProcess}"
-        }
-    ]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": ".NET Core Launch (console)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/bin/Debug/net5.0/dotnet-led-button.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "stopAtEntry": false
+    },
+    {
+      "name": ".NET Core Attach",
+      "type": "coreclr",
+      "request": "attach"
+    },
+    {
+      "fastiotId": "054aa898",
+      "fastiotIdDevice": "bananapim64-aa38a092",
+      "fastiotProject": "dotnet-led-button.csproj",
+      "name": ".NET Remote Launch on > bananapim64 #2 (Banana Pi M64, debugvscode)",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "dotnet",
+      "args": [
+        "./dotnet-led-button.dll"
+      ],
+      "cwd": "~/fastiot/dotnet-led-button",
+      "stopAtEntry": false,
+      "console": "integratedTerminal",
+      "env": {
+        "FASTIOT": "easy"
+      },
+      "pipeTransport": {
+        "pipeCwd": "${workspaceFolder}",
+        "pipeProgram": "C:\\RemoteCode\\cwrsync\\ssh.exe",
+        "pipeArgs": [
+          "-i",
+          "C:\\RemoteCode\\keys\\id-rsa-bananapim64-aa38a092-debugvscode",
+          "-o",
+          "StrictHostKeyChecking no",
+          "debugvscode@192.168.43.208"
+        ],
+        "debuggerPath": "/usr/share/vsdbg/vsdbg --engineLogging=/var/log/vsdbg.log"
+      },
+      "preLaunchTask": "fastiot-054aa898-copy-app-to-device"
+    }
+  ]
 }
