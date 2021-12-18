@@ -18,22 +18,27 @@ namespace dotnet_iot_button_from_nanoframework
             //for Linux
             const int GPIOCHIP = 1;
             const int BUTTON_PIN = 38;
+            //const int BUTTON_PIN = 68; //Pull-up            
+
             GpioController controller;
             var drvGpio = new LibGpiodDriver(GPIOCHIP);
             controller = new GpioController(PinNumberingScheme.Logical, drvGpio);
-            
+
             // Initialize a new button with the corresponding button pin
-            GpioButton button = new(buttonPin: BUTTON_PIN,controller);
+            var timespanDoublePress = TimeSpan.FromMilliseconds(300);
+            var timespanHolding  = TimeSpan.FromMilliseconds(100);
+            var button = new GpioButton(buttonPin: BUTTON_PIN, doublePress: timespanDoublePress, 
+                holding: timespanHolding, gpio: controller,false,PinMode.Input);
             
             Debug.WriteLine("Button is initialized, starting to read state");
 
             // Enable or disable holding or doublepress events
             button.IsDoublePressEnabled = true;
             button.IsHoldingEnabled = true;
-
+            
             // Write to debug if the button is down
             button.ButtonDown += (sender, e) =>
-            {
+            {                
                 Debug.WriteLine($"buttondown IsPressed={button.IsPressed}");
             };
 

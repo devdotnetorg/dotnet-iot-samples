@@ -1,0 +1,89 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/dotnet-iot-button-from-nanoframework/dotnet-iot-button-from-nanoframework.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "publish",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "publish",
+        "${workspaceFolder}/dotnet-iot-button-from-nanoframework/dotnet-iot-button-from-nanoframework.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "watch",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "watch",
+        "run",
+        "${workspaceFolder}/dotnet-iot-button-from-nanoframework/dotnet-iot-button-from-nanoframework.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "fastiot-ae685b90-build-linux",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/dotnet-iot-button-from-nanoframework/dotnet-iot-button-from-nanoframework.csproj",
+        "--configuration",
+        "Debug",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary",
+        "-r",
+        "linux-arm64"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "fastiot-ae685b90-create-folder",
+      "dependsOn": "fastiot-ae685b90-build-linux",
+      "command": "C:\\RemoteCode\\cwrsync\\ssh.exe",
+      "type": "process",
+      "args": [
+        "-i",
+        "C:\\RemoteCode\\keys\\id-rsa-bananapim64-aa38a092-debugvscode",
+        "-o",
+        "StrictHostKeyChecking no",
+        "debugvscode@192.168.43.208",
+        "mkdir -p ~/fastiot/dotnet-iot-button-from-nanoframework"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "fastiot-ae685b90-copy-app-to-device",
+      "dependsOn": "fastiot-ae685b90-create-folder",
+      "command": "C:\\RemoteCode\\cwrsync\\rsync.exe",
+      "type": "process",
+      "args": [
+        "--log-file=rsync.log",
+        "--progress",
+        "-avz",
+        "-e",
+        "C:\\RemoteCode\\cwrsync\\ssh.exe -i C:\\RemoteCode\\keys\\id-rsa-bananapim64-aa38a092-debugvscode -o 'StrictHostKeyChecking no'",
+        "/cygdrive/d/Anton/Projects/dotnet-iot-button-from-nanoframework/dotnet-iot-button-from-nanoframework/bin/Debug/net5.0/linux-arm64/",
+        "debugvscode@192.168.43.208:~/fastiot/dotnet-iot-button-from-nanoframework"
+      ],
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}
