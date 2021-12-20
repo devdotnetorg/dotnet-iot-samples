@@ -1,0 +1,136 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/dotnet-iot-fastiot-test.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "publish",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "publish",
+        "${workspaceFolder}/dotnet-iot-fastiot-test.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "watch",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "watch",
+        "run",
+        "${workspaceFolder}/dotnet-iot-fastiot-test.csproj",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "fastiot-ae8e376d-build-linux",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/dotnet-iot-fastiot-test.csproj",
+        "--configuration",
+        "Debug",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary",
+        "-r",
+        "linux-arm"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "fastiot-ae8e376d-create-folder",
+      "dependsOn": "fastiot-ae8e376d-build-linux",
+      "command": "C:\\RemoteCode\\cwrsync\\ssh.exe",
+      "type": "process",
+      "args": [
+        "-i",
+        "C:\\RemoteCode\\keys\\id-rsa-cubietruck-f793a30a-debugvscode",
+        "-o",
+        "StrictHostKeyChecking no",
+        "debugvscode@192.168.43.12",
+        "mkdir -p ~/fastiot/dotnet-iot-fastiot-test"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "fastiot-ae8e376d-copy-app-to-device",
+      "dependsOn": "fastiot-ae8e376d-create-folder",
+      "command": "C:\\RemoteCode\\cwrsync\\rsync.exe",
+      "type": "process",
+      "args": [
+        "--log-file=rsync.log",
+        "--progress",
+        "-avz",
+        "-e",
+        "C:\\RemoteCode\\cwrsync\\ssh.exe -i C:\\RemoteCode\\keys\\id-rsa-cubietruck-f793a30a-debugvscode -o 'StrictHostKeyChecking no'",
+        "/cygdrive/d/Anton/Projects/dotnet-iot-fastiot-test/bin/Debug/net5.0/linux-arm/",
+        "debugvscode@192.168.43.12:~/fastiot/dotnet-iot-fastiot-test"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "fastiot-a11cd0f8-build-linux",
+      "command": "dotnet",
+      "type": "process",
+      "args": [
+        "build",
+        "${workspaceFolder}/dotnet-iot-fastiot-test.csproj",
+        "--configuration",
+        "Debug",
+        "/property:GenerateFullPaths=true",
+        "/consoleloggerparameters:NoSummary",
+        "-r",
+        "linux-arm"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "fastiot-a11cd0f8-create-folder",
+      "dependsOn": "fastiot-a11cd0f8-build-linux",
+      "command": "C:\\RemoteCode\\cwrsync\\ssh.exe",
+      "type": "process",
+      "args": [
+        "-i",
+        "C:\\RemoteCode\\keys\\id-rsa-cubietruck-27eea909-root",
+        "-o",
+        "StrictHostKeyChecking no",
+        "root@192.168.43.12",
+        "mkdir -p ~/fastiot/dotnet-iot-fastiot-test"
+      ],
+      "problemMatcher": "$msCompile"
+    },
+    {
+      "label": "fastiot-a11cd0f8-copy-app-to-device",
+      "dependsOn": "fastiot-a11cd0f8-create-folder",
+      "command": "C:\\RemoteCode\\cwrsync\\rsync.exe",
+      "type": "process",
+      "args": [
+        "--log-file=rsync.log",
+        "--progress",
+        "-avz",
+        "-e",
+        "C:\\RemoteCode\\cwrsync\\ssh.exe -i C:\\RemoteCode\\keys\\id-rsa-cubietruck-27eea909-root -o 'StrictHostKeyChecking no'",
+        "/cygdrive/d/Anton/Projects/dotnet-iot-fastiot-test/bin/Debug/net5.0/linux-arm/",
+        "root@192.168.43.12:~/fastiot/dotnet-iot-fastiot-test"
+      ],
+      "problemMatcher": "$msCompile"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": ".NET Core Launch (console)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/bin/Debug/net5.0/dotnet-iot-blink.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "stopAtEntry": false
+    },
+    {
+      "name": ".NET Core Attach",
+      "type": "coreclr",
+      "request": "attach"
+    },
+    {
+      "fastiotId": "6e00ec7d",
+      "fastiotIdDevice": "cubieboard-c159eda4",
+      "fastiotProject": "dotnet-iot-blink.csproj",
+      "name": ".NET Remote Launch on cubieboard (Cubieboard, debugvscode)",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "dotnet",
+      "args": [
+        "./dotnet-iot-blink.dll"
+      ],
+      "cwd": "~/fastiot/dotnet-iot-blink",
+      "stopAtEntry": false,
+      "console": "integratedTerminal",
+      "env": {
+        "FASTIOT": "easy"
+      },
+      "pipeTransport": {
+        "pipeCwd": "${workspaceFolder}",
+        "pipeProgram": "C:\\RemoteCode\\cwrsync\\ssh.exe",
+        "pipeArgs": [
+          "-i",
+          "C:\\RemoteCode\\keys\\id-rsa-cubieboard-c159eda4-debugvscode",
+          "-o",
+          "StrictHostKeyChecking no",
+          "debugvscode@192.168.43.14"
+        ],
+        "debuggerPath": "/usr/share/vsdbg/vsdbg --engineLogging=/var/log/vsdbg.log"
+      },
+      "preLaunchTask": "fastiot-6e00ec7d-copy-app-to-device"
+    }
+  ]
+}

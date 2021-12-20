@@ -16,8 +16,14 @@ namespace dotnet_iot_blink
             */
             Console.WriteLine("Blinking LED.");
             //for Linux
-            const int GPIOCHIP = 1;
-            const int LED_PIN = 143; //GPIO143 - bananapi-m64:blue. Board: Banana Pi BPI-M64
+            //Board: Banana Pi BPI-M64. Led: bananapi-m64:blue.
+            //GPIOCHIP = 1, LED_PIN = 143
+            //Board: Cubietruck A20. Led: cubietruck:blue:usr.
+            //GPIOCHIP = 0, LED_PIN = 245
+            //Board: Cubieboard A10. Led: cubieboard:blue:usr.
+            //GPIOCHIP = 0, LED_PIN = 245
+            const int GPIOCHIP = 0;
+            const int LED_PIN = 245;
             GpioController controller;
             var drvGpio = new LibGpiodDriver(GPIOCHIP);
             controller = new GpioController(PinNumberingScheme.Logical, drvGpio);

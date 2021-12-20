@@ -1,0 +1,83 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": ".NET Core Launch (console)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "build",
+      "program": "${workspaceFolder}/bin/Debug/net5.0/dotnet-iot-fastiot-test.dll",
+      "args": [],
+      "cwd": "${workspaceFolder}",
+      "console": "internalConsole",
+      "stopAtEntry": false
+    },
+    {
+      "name": ".NET Core Attach",
+      "type": "coreclr",
+      "request": "attach"
+    },
+    {
+      "fastiotId": "ae8e376d",
+      "fastiotIdDevice": "cubietruck-f793a30a",
+      "fastiotProject": "dotnet-iot-fastiot-test.csproj",
+      "name": ".NET Remote Launch on cubietruck (Cubietruck, debugvscode)",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "dotnet",
+      "args": [
+        "./dotnet-iot-fastiot-test.dll"
+      ],
+      "cwd": "~/fastiot/dotnet-iot-fastiot-test",
+      "stopAtEntry": false,
+      "console": "integratedTerminal",
+      "env": {
+        "FASTIOT": "easy"
+      },
+      "pipeTransport": {
+        "pipeCwd": "${workspaceFolder}",
+        "pipeProgram": "C:\\RemoteCode\\cwrsync\\ssh.exe",
+        "pipeArgs": [
+          "-i",
+          "C:\\RemoteCode\\keys\\id-rsa-cubietruck-f793a30a-debugvscode",
+          "-o",
+          "StrictHostKeyChecking no",
+          "debugvscode@192.168.43.12"
+        ],
+        "debuggerPath": "/usr/share/vsdbg/vsdbg --engineLogging=/var/log/vsdbg.log"
+      },
+      "preLaunchTask": "fastiot-ae8e376d-copy-app-to-device"
+    },
+    {
+      "fastiotId": "a11cd0f8",
+      "fastiotIdDevice": "cubietruck-27eea909",
+      "fastiotProject": "dotnet-iot-fastiot-test.csproj",
+      "name": ".NET Remote Launch on cubietruck #1 (Cubietruck, root)",
+      "type": "coreclr",
+      "request": "launch",
+      "program": "dotnet",
+      "args": [
+        "./dotnet-iot-fastiot-test.dll"
+      ],
+      "cwd": "~/fastiot/dotnet-iot-fastiot-test",
+      "stopAtEntry": false,
+      "console": "integratedTerminal",
+      "env": {
+        "FASTIOT": "easy"
+      },
+      "pipeTransport": {
+        "pipeCwd": "${workspaceFolder}",
+        "pipeProgram": "C:\\RemoteCode\\cwrsync\\ssh.exe",
+        "pipeArgs": [
+          "-i",
+          "C:\\RemoteCode\\keys\\id-rsa-cubietruck-27eea909-root",
+          "-o",
+          "StrictHostKeyChecking no",
+          "root@192.168.43.12"
+        ],
+        "debuggerPath": "/usr/share/vsdbg/vsdbg --engineLogging=/var/log/vsdbg.log"
+      },
+      "preLaunchTask": "fastiot-a11cd0f8-copy-app-to-device"
+    }
+  ]
+}
