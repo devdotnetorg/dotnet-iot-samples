@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>dotnet_iot_bme280_riscv64</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Device.Gpio" Version="3.1.0" />
+    <PackageReference Include="Iot.Device.Bindings" Version="3.1.0" />
+  </ItemGroup>
+</Project>
